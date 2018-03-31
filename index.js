@@ -30,7 +30,17 @@ function symbolsToDNA() {
     Y: 'ACGA',
     Z: 'ACGC',
     ' ': 'ACGG',
-    '-': 'ACGT'
+    '-': 'ACGT',
+    '0': 'ACTA',
+    '1': 'ACTC',
+    '2': 'ACTG',
+    '3': 'ACTT',
+    '4': 'AGAA',
+    '5': 'AGAC',
+    '6': 'AGAG',
+    '7': 'AGAT',
+    '8': 'AGCA',
+    '9': 'AGCC'
   };
 }
 
@@ -40,7 +50,8 @@ function inverse(dna) {
     [R.equals('A'), R.always('T')],
     [R.equals('T'), R.always('A')],
     [R.equals('C'), R.always('G')],
-    [R.equals('G'), R.always('C')]
+    [R.equals('G'), R.always('C')],
+    [R.T, R.always('666')]
   ]);
 
   return R.join('', R.map(complementaryDNA, dna));
