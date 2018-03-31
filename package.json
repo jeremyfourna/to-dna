@@ -1,0 +1,23 @@
+{
+  "name": "to-dna",
+  "version": "0.1.0",
+  "description": "Transform strings to DNA for the Travelling Salesman problem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeremyfourna/to-dna.git"
+  },
+  "author": "Jeremy Fourna <jeremyfourna@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeremyfourna/to-dna/issues"
+  },
+  "homepage": "https://github.com/jeremyfourna/to-dna#readme",
+  "dependencies": {
+    "ramda": "^0.25.0"
+  }
+}
