@@ -14,12 +14,18 @@ See _Biomimicry_ book from Janine M. Benyus, Page 231-235.
 
 ### `toDNA` function
 
-`toDNA :: string -> string`
+```js
+const { toDNA } = require('to-dna');
+// toDNA :: string -> string
+```
 
 Example: `toDNA('jeremy fourna')` will output `AAGCAACAACACAACAAATAACGAACGGAACCAATGACCAACACAATCAAAA`.
 
 ### `toComplementaryDNA` function
 
-`toComplementaryDNA :: string -> string`
+```js
+const { toComplementaryDNA } = require('to-dna');
+// toComplementaryDNA :: string -> string
+```
 
 Example: `toComplementaryDNA('jeremy fourna')` will output `TTCGTTGTTGTGTTGTTTATTGCTTGCCTTGGTTACTGGTTGTGTTAGTTTT`.
