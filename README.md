@@ -2,7 +2,7 @@
 
 [![NPM](https://nodei.co/npm/to-dna.png)](https://www.npmjs.com/package/to-dna)
 
-Transform strings to DNA for the Travelling Salesman problem.
+Transform strings to DNA and vice versa.
 
 See _Biomimicry_ book from Janine M. Benyus, Page 231-235.
 
@@ -29,3 +29,21 @@ const { toComplementaryDNA } = require('to-dna');
 ```
 
 Example: `toComplementaryDNA('jeremy fourna')` will output `TTCGTTGTTGTGTTGTTTATTGCTTGCCTTGGTTACTGGTTGTGTTAGTTTT`.
+
+### `fromDNA` function
+
+```js
+const { fromDNA } = require('to-dna');
+// fromDNA :: string -> string
+```
+
+Example: `fromDNA('AAGCAACAACACAACAAATAACGAACGGAACCAATGACCAACACAATCAAAA')` will output `JEREMY FOURNA`.
+
+### `fromCompletementaryDNA` function
+
+```js
+const { fromCompletementaryDNA } = require('to-dna');
+// fromCompletementaryDNA :: string -> string
+```
+
+Example: `fromCompletementaryDNA('TTCGTTGTTGTGTTGTTTATTGCTTGCCTTGGTTACTGGTTGTGTTAGTTTT')` will output `JEREMY FOURNA`.

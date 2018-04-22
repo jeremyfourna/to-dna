@@ -44,6 +44,11 @@ function symbolsToDNA() {
   };
 }
 
+// dnaToSymbols :: object
+function dnaToSymbols() {
+  return R.invertObj(symbolsToDNA());
+}
+
 // inverse :: string -> string
 function inverse(dna) {
   const complementaryDNA = R.cond([
@@ -62,19 +67,54 @@ function symbolsToComplementaryDNA() {
   return R.map(inverse, symbolsToDNA());
 }
 
+// complementaryDNAToSymbols :: object
+function complementaryDNAToSymbols() {
+  return R.invertObj(symbolsToComplementaryDNA());
+}
+
 // toDNA :: string -> string
 function toDNA(text) {
-  const symbols = symbolsToDNA();
+  return parseStringToDNA(symbolsToDNA(), text);
+}
 
+// parseStringToDNA :: (object, string) -> string
+function parseStringToDNA(symbols, text) {
   return R.join('', R.map(cur => R.prop(cur, symbols), R.toUpper(text)));
 }
 
+// toComplementaryDNA :: string -> string
 function toComplementaryDNA(text) {
-  const symbols = symbolsToComplementaryDNA();
+  return parseStringToDNA(symbolsToComplementaryDNA(), text);
+}
 
-  return R.join('', R.map(cur => R.prop(cur, symbols), R.toUpper(text)));
+// fromDNA :: string -> string
+function fromDNA(text) {
+  return R.join('', parseDNAToString(dnaToSymbols(), text));
+}
+
+function fromCompletementaryDNA(text) {
+  return R.join('', parseDNAToString(complementaryDNAToSymbols(), text));
+}
+
+// parseStringToDNA :: (object, string, string) -> string
+function parseDNAToString(symbols, dna, result = '') {
+  // parseDNA :: string -> function
+  function parseDNA(dna) {
+    const firstPart = R.take(4, dna);
+    const newResult = R.append(R.prop(firstPart, symbols), result);
+
+    return parseDNAToString(symbols, R.drop(4, dna), newResult);
+  }
+
+  return R.ifElse(
+    R.isEmpty,
+    () => result,
+    parseDNA
+  )(dna);
 }
 
 
-exports.toDNA = toDNA;
+exports.fromCompletementaryDNA = fromCompletementaryDNA;
+exports.fromDNA = fromDNA;
 exports.toComplementaryDNA = toComplementaryDNA;
+exports.toDNA = toDNA;
